@@ -1,0 +1,179 @@
+# Напишите код на Python, реализующий расчет длины вектора, заданного его координатами. (в программе)
+
+%matplotlib inline
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+
+x = float(input("введите первую координату:"))
+y = float(input("введите вторую координату:"))
+z = float(input("введите третью координату:"))
+result = math.sqrt(x**2 + y**2 + z**2)
+print(f"Модуль ветора равен: {result}")
+
+
+
+#Напишите код на Python, реализующий построение графиков:
+#окружности
+
+R = 1
+x=[]
+y=[]
+for i in range(100):
+    x1 = i/100
+    y1 = math.sqrt(1 - x1**2)
+    x.append(x1)
+    y.append(y1)
+
+for i in range(100):
+    x1 = 1 - i/100
+    y1 = - math.sqrt(1 - x1**2)
+    x.append(x1)
+    y.append(y1) 
+    
+for i in range(100):
+    x1 = - i/100
+    y1 = - math.sqrt(1 - x1**2)
+    x.append(x1)
+    y.append(y1) 
+    
+for i in range(100):
+    x1 = i/100 -1
+    y1 = math.sqrt(1 - x1**2)
+    x.append(x1)
+    y.append(y1)    
+    
+        
+plt.plot(x,y)
+plt.xlabel("x")
+plt.ylabel("y")
+
+
+
+
+#Напишите код на Python, реализующий построение графиков:
+#эллипса
+
+A = 1
+B = 2
+x=[]
+y=[]
+for i in range(100):
+    x1 = i/100
+    y1 = B*math.sqrt(1 - x1**2/A**2)
+    x.append(x1)
+    y.append(y1)
+
+for i in range(100):
+    x1 = 1 - i/100
+    y1 = - B*math.sqrt(1 - x1**2/A**2)
+    x.append(x1)
+    y.append(y1) 
+    
+for i in range(100):
+    x1 = - i/100
+    y1 = - B*math.sqrt(1 - x1**2/A**2)
+    x.append(x1)
+    y.append(y1) 
+    
+for i in range(100):
+    x1 = i/100 -1
+    y1 = B*math.sqrt(1 - x1**2/A**2)
+    x.append(x1)
+    y.append(y1)    
+    
+        
+plt.plot(x,y)
+plt.xlabel("x")
+plt.ylabel("y")
+
+
+
+
+
+#Напишите код на Python, реализующий построение графиков:
+
+#гиперболы
+
+A = 1
+B = 2
+x_1=[]
+y_1=[]
+for i in range(100):
+    x1 = 2-i/100
+    y1 = B*math.sqrt(x1**2/A**2 - 1)
+    x_1.append(x1)
+    y_1.append(y1)    
+
+for i in range(100):
+    x1 = 1+i/100
+    y1 = - B*math.sqrt(x1**2/A**2 - 1)
+    x_1.append(x1)
+    y_1.append(y1)
+    
+x_2=[]
+y_2=[]
+for i in range(100):
+    x1 = -2+i/100
+    y1 = B*math.sqrt(x1**2/A**2 - 1)
+    x_2.append(x1)
+    y_2.append(y1)    
+
+for i in range(100):
+    x1 = -1-i/100
+    y1 = - B*math.sqrt(x1**2/A**2 - 1)
+    x_2.append(x1)
+    y_2.append(y1)    
+    
+        
+plt.plot(x_1,y_1)
+plt.plot(x_2,y_2)
+plt.xlabel("x")
+plt.ylabel("y")
+
+
+
+
+#5. Задание (в программе)
+#Нарисуйте трехмерный график двух параллельных плоскостей.
+
+from pylab import *
+from mpl_toolkits.mplot3d import Axes3D
+fig = figure()
+ax = Axes3D(fig)
+X = np.arange(-5, 5, 0.5)
+Y = np.arange(-5, 5, 0.5)
+X, Y = np.meshgrid(X, Y)
+
+Z1 = 2*X + 5*Y
+Z2 = 2*X + 5*Y+100
+
+ax.plot_surface(X, Y, Z1)
+ax.plot_surface(X, Y, Z2)
+
+show()
+
+
+
+
+#5. Задание (в программе)
+#Нарисуйте трехмерный график двух любых поверхностей второго порядка.
+
+from pylab import *
+from mpl_toolkits.mplot3d import Axes3D
+fig = figure()
+ax = Axes3D(fig)
+X = np.arange(-5, 5, 0.5)
+Y = np.arange(-5, 5, 0.5)
+X, Y = np.meshgrid(X, Y)
+
+Z1 = 2*X**2 + 5*Y
+Z2 = 2*X - 5*Y**2+100
+
+ax.plot_surface(X, Y, Z1)
+ax.plot_surface(X, Y, Z2)
+
+show()
+
+
+
