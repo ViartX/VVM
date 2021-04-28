@@ -1,0 +1,124 @@
+%matplotlib inline
+import numpy as np
+
+#Напишите код, проверяющий любую из теорем сложения или умножения вероятности на примере рулетки или подбрасывания монетки.
+#P(A+B) = P(A)+P(B)
+%matplotlib inline
+import numpy as np
+n = 1000
+A = int(0)
+B = int(11)
+n_a = 0 # a - событие выпадения A
+n_b = 0 # b - событие выпадения B
+n_ab = 0 # a+b - выпадение A или B
+
+for i in range(0, n):
+    num = int(np.random.uniform(0, 37))
+    if num == A:
+        n_a += 1
+        n_ab += 1
+    if num == B:    
+        n_b += 1
+        n_ab += 1 
+print(f"P(A) = {n_a/n}")
+print(f"P(B) = {n_b/n}")
+print(f"P(A+B) = {n_ab/n}")  
+
+
+
+#Сгенерируйте десять выборок случайных чисел х0, …, х9.
+#и постройте гистограмму распределения случайной суммы  +х1+ …+ х9.
+%matplotlib inline
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.mlab as mlab
+n = 10
+a = []
+b = []
+for i in range (0, n):
+    a.append(np.random.randint(0,10,n))
+print(a)    
+
+for i in range(0, n):
+    temp_sum = 0
+    for j in range(0, 10):
+        temp_sum += a[i][j]
+    b.append(temp_sum)
+print(b)   
+
+num_bins = 10
+n, bins, patches = plt.hist(b, num_bins)
+plt.xlabel('summa')
+plt.ylabel('Probability')
+plt.title('Histogram')
+
+
+
+#Дополните код Монте-Карло последовательности независимых испытаний расчетом соответствующих 
+# вероятностей (через биномиальное распределение) и сравните результаты. c из 4 по 2 
+
+%matplotlib inline
+import numpy as np
+
+# experiment
+k, n = 0, 10000
+a = np.random.randint(0, 2, n)
+b = np.random.randint(0, 2, n)
+c = np.random.randint(0, 2, n)
+d = np.random.randint(0, 2, n)
+x = a + b + c + d
+for i in range(0, n):
+    if x[i] == 2:
+        k = k + 1
+print(k, n, k/n)
+
+# Bernulli
+C_nk = np.math.factorial(4)/(np.math.factorial(2) * np.math.factorial(2))
+#print(C_nk)
+P_nk = C_nk*(0.5**(2))*(0.5**(2))
+print(P_nk)                          
+
+
+
+#Повторите расчеты биномиальных коэффициентов и вероятностей k успехов в последовательности из n независимых испытаний, 
+#взяв другие значения n и k.
+# кидаем два кубика - ждем выпадения 6+6
+%matplotlib inline
+import numpy as np
+
+# experiment
+k, n = 0, 10000
+a = np.random.randint(1, 7, n)
+b = np.random.randint(1, 7, n)
+
+x = a + b
+for i in range(0, n):
+    if x[i] == 12:
+        k = k + 1
+print(k, n, k/n)
+
+# Bernulli
+C_nk = np.math.factorial(2)/(np.math.factorial(2) * np.math.factorial(0))
+#print(C_nk)
+P_nk = C_nk*((0.167)**(2))*(0.833**(0))
+print(P_nk)
+
+
+
+#Из урока по комбинаторике повторите расчеты, сгенерировав возможные варианты перестановок для других значений n и k
+%matplotlib inline
+import numpy as np
+import itertools
+for p in itertools.permutations("123456",2):
+    print(''.join(str(x) for x in p))
+	
+	
+	
+#Из урока по комбинаторике повторите расчеты, сгенерировав возможные варианты перестановок для других значений n и k
+%matplotlib inline
+import numpy as np
+import itertools
+for p in itertools.combinations("123456",2):
+    print(''.join(str(x) for x in p))
+
+	

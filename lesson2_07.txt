@@ -1,0 +1,97 @@
+#1. Задание (в программе)
+#Нарисуйте график функции: y(x) = k∙cos(x – a) + b для некоторых (2-3 различных) значений параметров k, a, b
+%matplotlib inline
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+
+k=(1,-2)
+a=(0,-1)
+b=(0,4)
+i=0
+x = np.linspace(-np.pi, np.pi, 201)
+plt.plot(x, k[i]*np.cos(x - a[i]) + b[i])
+i=1
+plt.plot(x, k[i]*np.cos(x - a[i]) + b[i])
+
+plt.grid(True)
+plt.xlabel("x")
+plt.ylabel("y")
+plt.show
+
+
+#3. Задание (в программе)
+#Напишите код, который будет переводить полярные координаты в декартовы.
+# R,a -> x,y
+
+r = 1
+def PolarToDecart(float: r, a):
+    print(f"R = {r}; a = {a}") 
+    x = r * np.cos(a)
+    y = r * np.sin(a)
+    return (x,y)
+
+res = PolarToDecart(5,np.pi/3)
+print(res)
+
+
+
+#Напишите код, который будет рисовать график окружности в полярных координатах.
+x = np.linspace(0, 2*np.pi, 201)
+y = 5*x/x
+plt.polar(x,y)
+#plt.show
+
+
+
+
+#Напишите код, который будет рисовать график отрезка прямой линии в полярных координатах.
+
+k=1
+b=5
+
+a = np.linspace(0, 2*np.pi, 200)
+r = b/(np.sin(a) - k*np.cos(a))
+plt.polar(a,r)
+plt.show
+
+# непонятно
+
+
+
+#4. Задание (в программе)
+#Решите систему уравнений:
+#y = x2 – 1
+#exp(x) + x∙(1 – y) = 1
+%matplotlib inline
+import numpy as np
+import math
+from scipy.optimize import fsolve
+import matplotlib.pyplot as plt
+
+x = np.linspace(-2, 3, 201)
+plt.plot(x, 1 - (1-np.exp(x))/x + 1)
+plt.plot(x, x**2 - 1)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.ylim(-2,8) 
+plt.grid(True)
+plt.show()
+
+from scipy.optimize import fsolve
+
+def equations(p):
+    x, y = p
+    return ( x**2 - 1-y, 1 - (1-np.exp(x))/x + 1)
+
+x1, y1 =  fsolve(equations, (-1, 1))
+              
+print (x1, y1)
+
+
+
+
+
+
+
+
